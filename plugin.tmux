@@ -9,7 +9,7 @@ main() {
   local -r opt_size="$(get_tmux_option "@pass-window-size" "10")"
 
   tmux bind-key "$opt_key" \
-    run "tmux split-window -l $opt_size \"$CURRENT_DIR/scripts/main.sh '#{pane_id}'\""
+    run "tmux popup -w 70% -h 70% -b rounded -E \"$CURRENT_DIR/scripts/main.sh '#{pane_id}'\""
 }
 
 main "$@"

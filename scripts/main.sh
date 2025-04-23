@@ -103,9 +103,7 @@ main() {
     preview_cmd='pass show {}'
   fi
 
-  spinner_start "Fetching items"
   items="$(get_items)"
-  spinner_stop
 
   sel="$(echo "$items" | \
     fzf \
@@ -131,9 +129,7 @@ main() {
   case $key in
 
     enter)
-      spinner_start "Fetching password"
       passwd="$(get_password "$text")"
-      spinner_stop
 
       if [[ "$OPT_COPY_TO_CLIPBOARD" == "on" ]]; then
         copy_to_clipboard "$passwd"
@@ -144,9 +140,7 @@ main() {
       ;;
 
     alt-enter)
-      spinner_start "Fetching username"
       login="$(get_login "$text")"
-      spinner_stop
 
       if [[ "$OPT_COPY_TO_CLIPBOARD" == "on" ]]; then
         copy_to_clipboard "$login"
@@ -156,9 +150,7 @@ main() {
       ;;
 
     alt-space)
-      spinner_start "Fetching otp"
       otp="$(get_otp "$text")"
-      spinner_stop
 
       if [[ "$OPT_COPY_TO_CLIPBOARD" == "on" ]]; then
         copy_to_clipboard "$otp"
